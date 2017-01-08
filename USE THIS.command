@@ -15,7 +15,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ##Variables
 AEPROJ="/lowerthird2017.aepx"
 AEPROJ2="/target.aepx"
-RENDES="/"$NAME".mov"
 
 echo "Chua Title Visualizer (CTV) v2.017 by Jason Chua"
 echo "For Sammi <3"
@@ -26,6 +25,7 @@ read NAME
 echo "Enter the title and press [ENTER]"
 read TITLE
 echo "This title is for $NAME the $TITLE"
+RENDES="/"$NAME".mov"
 
 ##Create tmp files
 cp "$DIR""$AEPROJ" "$DIR""$AEPROJ2"

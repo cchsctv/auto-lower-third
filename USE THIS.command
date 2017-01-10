@@ -12,7 +12,7 @@ echo $AELOC
 ##For some reason this makes evverything work
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "Chua Title Visualizer (CTV) v2.017 by Jason Chua"
+echo "Chua Title Visualizer (CTV) v2.017.1 by Jason Chua"
 echo "For Sammi <3"
 
 ##Get User Input

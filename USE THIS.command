@@ -12,12 +12,7 @@ echo $AELOC
 ##For some reason this makes evverything work
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-##Variables
-AEPROJ="/lowerthird2017.aepx"
-AEPROJ2="/target.aepx"
-RENDES="/"$NAME".mov"
-
-echo "Chua Title Visualizer (CTV) v2.017 by Jason Chua"
+echo "Chua Title Visualizer (CTV) v2.017.1 by Jason Chua"
 echo "For Sammi <3"
 
 ##Get User Input
@@ -26,6 +21,12 @@ read NAME
 echo "Enter the title and press [ENTER]"
 read TITLE
 echo "This title is for $NAME the $TITLE"
+
+##Variables
+TARGET="$(date +%s)"
+AEPROJ="/lowerthird2017.aepx"
+AEPROJ2="/$TARGET.aepx"
+RENDES="/"$NAME".mov"
 
 ##Create tmp files
 cp "$DIR""$AEPROJ" "$DIR""$AEPROJ2"
@@ -41,5 +42,5 @@ sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ2"
 rm -R "$DIR""$AEPROJ2"*
 
 ##Close Terminal Window
-osascript -e 'tell application "Terminal" to quit' &
+#osascript -e 'tell application "Terminal" to quit' &
 exit

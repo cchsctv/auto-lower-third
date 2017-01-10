@@ -1,4 +1,14 @@
 *.mov
+!LOGO.mov
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
 .DS_Store
 .DS_Store?

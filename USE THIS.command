@@ -42,5 +42,5 @@ sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ2"
 rm -R "$DIR""$AEPROJ2"*
 
 ##Close Terminal Window
-osascript -e 'tell application "Terminal" to quit' &
+#osascript -e 'tell application "Terminal" to quit' &
 exit

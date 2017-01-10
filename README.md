@@ -5,16 +5,21 @@ Script to generate lower thirds with alpha via text input for Adobe After Effect
 - To be easy, such that lower thirds via After Affects can be made without any knowledge of After Effects
 - To produce consistent, uniform lower thirds
 
+#Features
+- Supports any After Effects CC 2014+ (Will search and use highest version)
+- Compatible with other After Effects Projects (After Effects XML with modifications, see #Notes)
+- Supports multiple instances (Limit 1 per second)
+
 # System Requirements
 - Mac OS 10.8+
 - Adobe After Effects CC 2014.2+
 
 # TODO
-- Allow for instances
+- ~~Allow for instances~~
 - Escape charaters to allow slashes in "Name"
 - Make execption when existing name is entered.
-- Optimize sequence for better render time
-- ~~Detect and use other versions of after effects~~ Done Jan 2017
+- ~~Optimize sequence for better render time~~
+- ~~Detect and use other versions of after effects~~
 - Windows support...
 
 # Notes

@@ -1,4 +1,6 @@
 #!/bin/sh
+## Adobe, the Adobe logo, and After Effects are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
+
 ##Finds the most current version of After Effects (2014.2+ required)
 AELOC="$(find /Applications -regex "/Applications/Adobe After Effects CC.*/.*aerender" -maxdepth 4)"
 AELOC="$(echo $AELOC | rev)"
@@ -9,10 +11,11 @@ AELOC=$AELOC'aerender'
 echo "Ill be using this version:"
 echo $AELOC
 
-##For some reason this makes evverything work
+##Get the current working directory, the directory the script is in
+##Dave Dopson on StackOverflow
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "Chua Title Visualizer (CTV) v2.017.1 by Jason Chua"
+echo "Chua Title Visualizer (CTV) v2.017.3 by Jason Chua"
 echo "For Sammi <3"
 
 ##Get User Input

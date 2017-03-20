@@ -9,8 +9,9 @@ while [ "x$AELOC" = "x" ];
 do
   echo "I couldnt find After Effects in $SEARCHDIR"
   echo "Would you like to specify a directory I should look in?"
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-#  if [ "$response" =~ ^\(\[yY\]\[eE\]\[sS\]\|\[yY\]\)\+\$ ]; then
+  read RESPONSE
+  if [[ "$RESPONSE" =~ ^([yY][eE][sS]|[yY])+$ ]];
+  then
     echo "Enter a directory"
     read SEARCHDIR
     AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "*/Adobe After Effects CC.*/.*aerender")"

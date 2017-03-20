@@ -3,7 +3,7 @@
 
 ##Finds the most current version of After Effects (2014.2+ required)
 SEARCHDIR="/Applications"
-AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "*/Adobe After Effects CC.*/.*aerender")"
+AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "$SEARCHDIR/Adobe After Effects CC.*/.*aerender")"
 while [ "x$AELOC" = "x" ];
 do
   echo "I couldnt find After Effects in $SEARCHDIR"

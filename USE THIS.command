@@ -28,8 +28,7 @@ echo $AELOC
 
 ##Get the current working directory, the directory the script is in
 ##Dave Dopson on StackOverflows
-#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-DIR="$( pwd )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "The current working directory is:"
 echo $DIR

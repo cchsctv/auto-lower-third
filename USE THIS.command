@@ -51,7 +51,7 @@ echo "This title is for $NAME the $TITLE"
 
 ##Sanitize inputs
 ##TODO
-echo $NAME
+echo $NAME | tr "/"  " "
 
 ##Variables
 #To Prevent collision of files, epoch time is used
@@ -67,12 +67,14 @@ cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 
 ##Use Stream EDitor to change layer names
 #TODO
-#Make into a function\
+#Make into a function
+
 edit_xml() {
   REPLACETHIS="$1"
   WITHTHIS="$2"
   sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
+
 edit_xml CTV_NAME "$NAME"
 #sed -i .bak s~CTV_NAME~"$NAME"~g "$DIR""$AEPROJ_TMP"
 edit_xml CTV_TITLE "$TITLE"

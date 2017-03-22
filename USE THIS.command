@@ -2,19 +2,19 @@
 ## Adobe, the Adobe logo, and After Effects are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
 
 ##Finds the most current version of After Effects (2014.2+ required)
-SEARCHDIR="/Applications"
-AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "$SEARCHDIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
-#AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "$SEARCHDIR/Adobe After Effects CC.*/.*aerender")"
+SEARCH_DIR="/Applications"
+AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
+#AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender")"
 while [ "x$AELOC" = "x" ];
 do
-  echo "I couldnt find After Effects in $SEARCHDIR"
+  echo "I couldnt find After Effects in $SEARCH_DIR"
   echo "Would you like to specify a directory I should look in?"
   read RESPONSE
   if [[ "$RESPONSE" =~ ^([yY][eE][sS]|[yY])+$ ]];
   then
     echo "Enter a directory"
-    read SEARCHDIR
-    AELOC="$(find $SEARCHDIR -maxdepth 4 -regex "*/Adobe After Effects CC.*/.*aerender")"
+    read SEARCH_DIR
+    AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "*/Adobe After Effects CC.*/.*aerender")"
   else
     echo "Have a nice day!"
     exit
@@ -29,7 +29,7 @@ echo "I'll be using this version:"
 echo $AELOC
 
 ##Get the current working directory, the directory the script is in
-##Dave Dopson on StackOverflows
+##Dave Dopson on StackOverflow
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "The current working directory is:"
@@ -54,11 +54,11 @@ echo "This title is for $NAME the $TITLE"
 #Standard use case
 TARGET="$(date +%s)"
 AEPROJ="/lowerthird2017.aepx"
-AEPROJ2="/$TARGET.aepx"
+AEPROJ_TMP="/$TARGET.aepx"
 RENDES="/"$NAME".mov"
 
 ##Create tmp files
-cp "$DIR""$AEPROJ" "$DIR""$AEPROJ2"
+cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 
 ##Use Stream EDitor to change layer names
 #TODO
@@ -68,17 +68,17 @@ edit_xml() {
   WITHTHIS="$2"
   echo $REPLACETHIS
   echo $WITHTHIS
-  sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ2"
+  sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
 edit_xml CTV_NAME "$NAME"
-#sed -i .bak s~CTV_NAME~"$NAME"~g "$DIR""$AEPROJ2"
-#sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ2"
+#sed -i .bak s~CTV_NAME~"$NAME"~g "$DIR""$AEPROJ_TMP"
+#sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ_TMP"
 
 ##Render with After Effects
-"$AELOC" -project "$DIR""$AEPROJ2" -rqindex "1" -RStemplate "Best Settings" -output "$DIR""$RENDES"
+"$AELOC" -project "$DIR""$AEPROJ_TMP" -rqindex "1" -RStemplate "Best Settings" -output "$DIR""$RENDES"
 
 ##Remove tmp files
-rm -R "$DIR""$AEPROJ2"*
+rm -R "$DIR""$AEPROJ_TMP"*
 
 ##Close Terminal Window
 #osascript -e 'tell application "Terminal" to quit' &

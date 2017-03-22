@@ -72,6 +72,10 @@ cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 edit_xml() {
   REPLACETHIS="$1"
   WITHTHIS="$2"
+  echo $REPLACETHIS
+  echo $WITHTHIS
+  echo $DIR
+  echo $AEPROJ_TMP
   sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
 

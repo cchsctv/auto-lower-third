@@ -79,7 +79,7 @@ edit_xml() {
   echo $WITHTHIS
   echo $DIR
   echo $AEPROJ_TMP
-  sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
+  sed -i .bak s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
 
 edit_xml CTV_NAME $NAME

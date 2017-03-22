@@ -44,9 +44,9 @@ echo "For Sammi <3"
 
 ##Get User Input
 echo "Enter the name (No Slashes) and press [ENTER]"
-read NAME
+#read NAME
 echo "Enter the title and press [ENTER]"
-read TITLE
+#read TITLE
 echo "This title is for $NAME the $TITLE"
 
 ##Sanitize inputs
@@ -68,6 +68,9 @@ cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 ##Use Stream EDitor to change layer names
 #TODO
 #Make into a function
+
+TITLE=TITLE
+NAME=NAME
 
 edit_xml() {
   REPLACETHIS="$1"

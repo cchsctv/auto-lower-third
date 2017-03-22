@@ -82,9 +82,9 @@ edit_xml() {
   sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
 
-edit_xml CTV_NAME "$NAME"
+edit_xml CTV_NAME $NAME
 #sed -i .bak s~CTV_NAME~"$NAME"~g "$DIR""$AEPROJ_TMP"
-edit_xml CTV_TITLE "$TITLE"
+edit_xml CTV_TITLE "\$TITLE"
 #sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ_TMP"
 
 ##Render with After Effects

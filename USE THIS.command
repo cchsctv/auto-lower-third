@@ -7,8 +7,8 @@
 ## Accept input NAME and TITLE as flags
 
 SEARCH_DIR="/Applications"
-AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
-#AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender")"
+#AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
+AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender")"
 while [ "x$AELOC" = "x" ];
 do
   echo "I couldnt find After Effects in $SEARCH_DIR"
@@ -51,7 +51,7 @@ echo "This title is for $NAME the $TITLE"
 
 ##Sanitize inputs
 ##TODO
-NAME=
+echo $NAME
 
 ##Variables
 #To Prevent collision of files, epoch time is used
@@ -87,4 +87,5 @@ rm -R "$DIR""$AEPROJ_TMP"*
 ##Close Terminal Window
 #osascript -e 'tell application "Terminal" to quit' &
 #exit
+echo -n -e "\033]0;My Window Name\007"
 osascript -e 'tell application "Terminal" to close "My Window Name" & exit

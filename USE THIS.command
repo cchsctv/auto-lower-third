@@ -2,6 +2,10 @@
 ## Adobe, the Adobe logo, and After Effects are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
 
 ##Finds the most current version of After Effects (2014.2+ required)
+
+##TODO
+## Accept input NAME and TITLE as flags
+
 SEARCH_DIR="/Applications"
 AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
 #AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender")"
@@ -14,7 +18,7 @@ do
   then
     echo "Enter a directory"
     read SEARCH_DIR
-    AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "*/Adobe After Effects CC.*/.*aerender")"
+    AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "*$SEARCH_DIR/.*aerender")"
   else
     echo "Have a nice day!"
     exit
@@ -47,6 +51,7 @@ echo "This title is for $NAME the $TITLE"
 
 ##Sanitize inputs
 ##TODO
+NAME=
 
 ##Variables
 #To Prevent collision of files, epoch time is used
@@ -66,12 +71,11 @@ cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 edit_xml() {
   REPLACETHIS="$1"
   WITHTHIS="$2"
-  echo $REPLACETHIS
-  echo $WITHTHIS
   sed -i s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }
 edit_xml CTV_NAME "$NAME"
 #sed -i .bak s~CTV_NAME~"$NAME"~g "$DIR""$AEPROJ_TMP"
+edit_xml CTV_TITLE "$TITLE"
 #sed -i .bak s~CTV_TITLE~"$TITLE"~g "$DIR""$AEPROJ_TMP"
 
 ##Render with After Effects
@@ -82,4 +86,5 @@ rm -R "$DIR""$AEPROJ_TMP"*
 
 ##Close Terminal Window
 #osascript -e 'tell application "Terminal" to quit' &
-exit
+#exit
+osascript -e 'tell application "Terminal" to close "My Window Name" & exit

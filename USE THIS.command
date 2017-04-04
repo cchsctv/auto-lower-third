@@ -7,23 +7,12 @@
 ## Accept input NAME and TITLE as flags
 
 SEARCH_DIR="/Applications"
-#AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aeredddnder")" #This line will fail. This is intentional
-AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender")"
-while [ "x$AELOC" = "x" ];
-do
+AELOC="$(find $SEARCH_DIR -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender" -maxdepth 4)"
+if [ "x$AELOC" = "x" ];
+then
   echo "I couldnt find After Effects in $SEARCH_DIR"
-  echo "Would you like to specify a directory I should look in?"
-  read RESPONSE
-  if [[ "$RESPONSE" =~ ^([yY][eE][sS]|[yY])+$ ]];
-  then
-    echo "Enter a directory"
-    read SEARCH_DIR
-    AELOC="$(find $SEARCH_DIR -maxdepth 4 -regex "*$SEARCH_DIR/.*aerender")"
-  else
-    echo "Have a nice day!"
-    exit
-  fi
-done
+  echo "Please move After Effects to $SEARCH_DIR"
+fi
 AELOC="$(echo $AELOC | rev)"
 AELOC="$(echo $AELOC | sed s~rednerea~':'~g | cut -f 2 -d':')"
 AELOC="$(echo $AELOC | rev)"
@@ -33,7 +22,7 @@ echo "I'll be using this version:"
 echo $AELOC
 
 ##Get the current working directory, the directory the script is in
-##Dave Dopson on StackOverflow
+##Credit to Dave Dopson on StackOverflow
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "The current working directory is:"
@@ -72,9 +61,13 @@ cp "$DIR""$AEPROJ" "$DIR""$AEPROJ_TMP"
 edit_xml() {
   REPLACETHIS="$1"
   WITHTHIS="$2"
+  echo "REPLACETHIS"
   echo $REPLACETHIS
+  echo "WITHTHIS"
   echo $WITHTHIS
+  echo "DIR"
   echo $DIR
+  echo "AEPROJ_TMP"
   echo $AEPROJ_TMP
   sed -i .bak s~"$REPLACETHIS"~"$WITHTHIS"~g "$DIR""$AEPROJ_TMP"
 }

@@ -18,6 +18,7 @@ SEARCH_DIR="/Applications"
 AELOC="$(find $SEARCH_DIR -regex "$SEARCH_DIR/Adobe After Effects CC.*/.*aerender" -maxdepth 4)"
 if [ "x$AELOC" = "x" ];
 then
+  #TODO Halt script if renderer cannot be found
   echo "I couldnt find After Effects in $SEARCH_DIR"
   echo "Please move After Effects to $SEARCH_DIR"
 fi

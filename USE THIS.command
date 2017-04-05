@@ -67,7 +67,7 @@ edit_xml CTV_NAME "$NAME"
 edit_xml CTV_TITLE "$TITLE"
 
 ##Render with After Effects
-#"$AELOC" -project "$DIR""$AEPROJ_TMP" -rqindex "1" -RStemplate "Best Settings" -output "$DIR""$RENDES"
+"$AELOC" -project "$DIR""$AEPROJ_TMP" -rqindex "1" -RStemplate "Best Settings" -output "$DIR""$RENDES"
 
 ##Remove tmp files
 rm -R "$DIR""$AEPROJ_TMP"*

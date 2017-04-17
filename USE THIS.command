@@ -1,7 +1,6 @@
 #!/bin/sh
 ## Adobe, the Adobe logo, and After Effects are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
 
-
 ##TODO Accept input NAME and TITLE as flags
 
 #epoch time
@@ -21,6 +20,7 @@ then
   #TODO Halt script if renderer cannot be found
   echo "I couldnt find After Effects in $SEARCH_DIR"
   echo "Please move After Effects to $SEARCH_DIR"
+  exit
 fi
 AELOC="$(echo $AELOC | rev)"
 AELOC="$(echo $AELOC | sed s~rednerea~':'~g | cut -f 2 -d':')"
